@@ -3,16 +3,19 @@
 const http = require("http");
 
 const port = process.env.PORT || 3000;
+// Personalización inyectada por Ghosty Launch (paso "Personaliza").
+const name = process.env.APP_NAME || "Ghosty Launch";
+const accent = process.env.APP_ACCENT || "#a78bfa";
 
 http
   .createServer((_req, res) => {
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
     res.end(
-      `<!doctype html><html><head><meta charset="utf-8"><title>Ghosty Launch</title></head>` +
-        `<body style="font-family:system-ui;display:grid;place-items:center;height:100vh;margin:0;background:#0b0b0f;color:#a78bfa">` +
-        `<div style="text-align:center"><h1>👻 Live en EasyBits</h1>` +
+      `<!doctype html><html><head><meta charset="utf-8"><title>${name}</title></head>` +
+        `<body style="font-family:system-ui;display:grid;place-items:center;height:100vh;margin:0;background:#0b0b0f;color:${accent}">` +
+        `<div style="text-align:center"><h1>👻 ${name}</h1>` +
         `<p style="color:#787882">Publicado por Ghosty Launch — dev in prod.</p></div>` +
         `</body></html>`
     );
   })
-  .listen(port, () => console.log(`ref-node escuchando en :${port}`));
+  .listen(port, () => console.log(`${name} escuchando en :${port}`));
